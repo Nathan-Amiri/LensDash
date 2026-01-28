@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1298b69cb9bb8d4b8a099cc3f6331cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  sr: {fileID: 8735164606726623935}
   rb: {fileID: 3152412869357680047}
 --- !u!50 &3152412869357680047
 Rigidbody2D:

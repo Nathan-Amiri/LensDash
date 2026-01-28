@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
     // PREFAB REFERENCE:
+    [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Rigidbody2D rb;
 
     // CONSTANT:
@@ -28,8 +29,19 @@ public class Player : MonoBehaviour
     //private bool dashInput;
     //private bool hasDash;
 
+    private int currentScene;
+
     private void Update()
     {
+        if (transform.position.x > 5.5f)
+            transform.position = new(5.5f, transform.position.y);
+        if (transform.position.x < -5.5f)
+            transform.position = new(-5.5f, transform.position.y);
+        if (transform.position.y > 5.5f)
+            transform.position = new(transform.position.x, 5.5f);
+        if (transform.position.y < -5.5f)
+            transform.position = new(transform.position.x, -5.5f);
+
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetButtonDown("Jump"))
             jumpInput = true;
@@ -112,4 +124,28 @@ public class Player : MonoBehaviour
         if (col.CompareTag("Terrain"))
             isGrounded = false;
     }
+
+    public void Die() // Called by Spikes
+    {
+        sr.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        Invoke(nameof(Restart), 1);
+    }
+    public void Win()
+    {
+        currentScene += 1;
+
+        sr.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        Invoke(nameof(Restart), 1);
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(currentScene);
+    }
+
+
 }
