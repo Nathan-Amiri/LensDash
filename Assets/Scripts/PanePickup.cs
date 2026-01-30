@@ -16,6 +16,13 @@ public class PanePickup : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             inventory.PickupPane(paneColor);
+
+            if (TryGetComponent(out LevelElement levelElement))
+            {
+                int pane = PaneNumberFinder.GetPaneNumber(transform.position);
+                LevelElement.levelElements[pane].Remove(levelElement);
+            }
+
             Destroy(gameObject);
         }
     }

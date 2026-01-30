@@ -136,10 +136,11 @@ public class Inventory : MonoBehaviour
 
             storedPanes[draggingSlot] = PaneColor.Colorless;
 
+            slotSRs[draggingSlot].color = Color.black;
+
             slotSRs[draggingSlot].enabled = true;
         }
 
-        slotSRs[draggingSlot].color = Color.black;
         slotSRs[draggingSlot].transform.position = slotPositions[draggingSlot];
 
         draggingSlot = -1;

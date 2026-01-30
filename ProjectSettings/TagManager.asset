@@ -49,6 +49,9 @@ TagManager:
   - name: StoredPanes
     uniqueID: 654643185
     locked: 0
+  - name: Player
+    uniqueID: 442895053
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

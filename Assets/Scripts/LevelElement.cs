@@ -16,15 +16,19 @@ public class LevelElement : MonoBehaviour
         // they might be visible for a split second at the start of the game. So to prevent any chance of the player seeing the solution at the beginning,
         // we hide all level elements in awake asap before any of the start code runs
         sr.enabled = false;
-    }
 
-    private void Start()
-    {
+        // Clear static lists when loading a new scene
+        foreach (List<LevelElement> levelElementList in levelElements)
+            levelElementList.Clear();
+
         // Make a list of level elements, one list for each grid section
         if (levelElements.Count == 0) // Don't add to the static list on every level element at the start! Just once
             for (int i = 0; i < 9; i++)
                 levelElements.Add(new());
+    }
 
+    private void Start()
+    {
         int myPane = PaneNumberFinder.GetPaneNumber(transform.position);
         levelElements[myPane].Add(this);
 
