@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     // CONSTANT:
     public float moveSpeed = 8;
     public float jumpForce = 15.5f;
+    public float doubleJumpForce = 15.5f;
     //private readonly float dashForce = 15;
     private readonly float fallMultiplier = 3; // Fastfall
     //private readonly float diagonalDashMultiplier = 2;
@@ -35,7 +36,6 @@ public class Player : MonoBehaviour
     //private bool hasDash;
 
     private int currentScene;
-
 
     private void Update()
     {
@@ -77,7 +77,8 @@ public class Player : MonoBehaviour
             {
                 jumpCount -= 1;
                 rb.linearVelocity = new(rb.linearVelocity.x, 0);
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                float newForce = jumpCount == 1 ? jumpForce : doubleJumpForce;
+                rb.AddForce(Vector2.up * newForce, ForceMode2D.Impulse);
             }
         }
 
@@ -138,6 +139,9 @@ public class Player : MonoBehaviour
 
     private void Restart()
     {
+        // Must reset static int BEFORE going to new scene, otherwise stuff will be messed up during Awake of new scene
+        PaneNumberFinder.rotationSteps = 0;
+
         SceneManager.LoadScene(currentScene);
     }
 
@@ -169,5 +173,6 @@ public class Player : MonoBehaviour
     {
         float rotation = rotateClockwise ? 90 : -90;
         playZone.transform.rotation *= Quaternion.Euler(0, 0, rotation);
+        PaneNumberFinder.Rotate(rotateClockwise);
     }
 }
