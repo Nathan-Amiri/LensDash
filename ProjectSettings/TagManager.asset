@@ -43,20 +43,29 @@ TagManager:
   - name: Background
     uniqueID: 2649506461
     locked: 0
+  - name: 1
+    uniqueID: 2717405469
+    locked: 0
+  - name: 2
+    uniqueID: 1770509087
+    locked: 0
+  - name: 3
+    uniqueID: 2195923131
+    locked: 0
+  - name: PlacedPanes
+    uniqueID: 1681652903
+    locked: 0
   - name: PlayElements
     uniqueID: 1508800439
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: StoredPanes
-    uniqueID: 654643185
-    locked: 0
   - name: Player
     uniqueID: 442895053
     locked: 0
-  - name: PlacedPanes
-    uniqueID: 1681652903
+  - name: StoredPanes
+    uniqueID: 654643185
     locked: 0
   - name: PanePickups
     uniqueID: 1617951001

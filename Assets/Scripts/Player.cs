@@ -39,14 +39,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x > 5.6f)
-            transform.position = new(5.6f, transform.position.y);
-        if (transform.position.x < -5.6f)
-            transform.position = new(-5.6f, transform.position.y);
-        if (transform.position.y > 5.6f)
-            transform.position = new(transform.position.x, 5.6f);
-        if (transform.position.y < -5.6f)
-            transform.position = new(transform.position.x, -5.6f);
+        if (transform.position.x > 5.637f)
+            transform.position = new(5.637f, transform.position.y);
+        if (transform.position.x < -5.637f)
+            transform.position = new(-5.637f, transform.position.y);
+        if (transform.position.y > 5.637f)
+            transform.position = new(transform.position.x, 5.637f);
+        if (transform.position.y < -5.637f)
+            transform.position = new(transform.position.x, -5.637f);
 
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetButtonDown("Jump"))

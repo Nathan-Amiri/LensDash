@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
             slotSRs[draggingSlot].enabled = false;
             int currentGridSection = PaneNumberFinder.GetPaneNumber(mousePosition);
 
-            SetPaneSortingPlaced(currentGridSection);
+            //SetPaneSortingPlaced(currentGridSection);
 
             // If dragging to a new grid section, reset the one you left
             if (currentGridSection != lastGridSection && lastGridSection != -1)
@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour
                 ChangePaneBackgroundColor(lastGridSection, gridColors[lastGridSection]);
                 if (gridColors[lastGridSection] == PaneColor.Colorless)
                 {
-                    SetPaneSortingDefault(lastGridSection);
+                    //SetPaneSortingDefault(lastGridSection);
                 }
 
                 foreach (LevelElement levelElement in LevelElement.levelElements[lastGridSection])
@@ -133,7 +133,7 @@ public class Inventory : MonoBehaviour
 
                     if (gridColors[lastGridSection] == PaneColor.Colorless)
                     {
-                        SetPaneSortingDefault(lastGridSection);
+                        //SetPaneSortingDefault(lastGridSection);
                     }
                 }
 
@@ -168,7 +168,7 @@ public class Inventory : MonoBehaviour
     private void ChangePaneBackgroundColor(int paneBackgroundIndex, PaneColor paneColor)
     {
         float a = paneBackgrounds[paneBackgroundIndex].color.a;
-        Color newColor = paneColor == PaneColor.Colorless ? Color.black : GetColorFromEnum(paneColor);
+        Color newColor = GetColorFromEnum(paneColor); //paneColor == PaneColor.Colorless ? Color.black : GetColorFromEnum(paneColor); CHANGE THIS BACK, JUST FOR TEST SCENE!
         newColor.a = a;
         paneBackgrounds[paneBackgroundIndex].color = newColor;
     }
