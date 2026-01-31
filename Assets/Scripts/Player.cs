@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] private CircleCollider2D myCol;
     [SerializeField] private CircleCollider2D groundCheckCol;
 
+    private Animator animator;
+
+
     // SCENE REFERENCE:
     [SerializeField] private Transform playZone;
 
@@ -51,6 +54,9 @@ public class Player : MonoBehaviour
             worldBackgroundColor = worldBackgroundColors[currentWorld - 1];
             worldPaneColor = worldPaneColors[currentWorld - 1];
         }
+
+        animator = GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -116,7 +122,8 @@ public class Player : MonoBehaviour
 
     public void Die() // Called by Spikes
     {
-        sr.enabled = false;
+
+        animator.SetBool("isDie", true);
         ToggleStun(true);
         rb.linearVelocity = Vector2.zero;
 
@@ -126,7 +133,6 @@ public class Player : MonoBehaviour
     {
         currentScene += 1;
 
-        sr.enabled = false;
         ToggleStun(true);
         rb.linearVelocity = Vector2.zero;
 
