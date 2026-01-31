@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5163890171550634631}
   - component: {fileID: 5443701208406630404}
   - component: {fileID: 4712756169949268030}
+  - component: {fileID: -6630587861146495124}
   - component: {fileID: 4559837276739017373}
   - component: {fileID: 957420020831813826}
   m_Layer: 0
@@ -108,8 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pane
   paneColor: 2
-  floatAmplitude: 0.1
-  floatSpeed: 1
 --- !u!114 &4712756169949268030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +123,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelElement
   paneColorThatRevealsMe: 0
   sr: {fileID: 5163890171550634631}
+--- !u!114 &-6630587861146495124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237900837248628890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c535f52ddfa418e469c85cc931cfa131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Float
+  floatAmplitude: 0.2
+  floatSpeed: 2
 --- !u!50 &4559837276739017373
 Rigidbody2D:
   serializedVersion: 5

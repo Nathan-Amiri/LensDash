@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    public enum PaneColor { Colorless, Red, Blue, Green };
+    public enum PaneColor { Colorless, Red, Blue, Purple };
 
     public static int currentWorld;
     public static Color worldBackgroundColor;

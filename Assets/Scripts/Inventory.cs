@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private Color redPaneColor;
     [SerializeField] private Color bluePaneColor;
-    [SerializeField] private Color greenPaneColor;
+    [SerializeField] private Color purplePaneColor;
 
     private void Awake()
     {
@@ -170,8 +170,8 @@ public class Inventory : MonoBehaviour
             return redPaneColor;
         else if (color == PaneColor.Blue)
             return bluePaneColor;
-        else if (color == PaneColor.Green)
-            return greenPaneColor;
+        else if (color == PaneColor.Purple)
+            return purplePaneColor;
         else
             return worldPaneColor;
     }
