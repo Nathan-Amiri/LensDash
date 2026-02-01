@@ -21,6 +21,8 @@ public class ScreenWipe : MonoBehaviour
 
     public void StartWipe(bool deathWipe)
     {
+        AudioManager.Instance.PlayScreenWipeSfx();
+
         justDied = deathWipe;
 
         image.color = deathWipe ? deathColor : Player.worldBackgroundColor;

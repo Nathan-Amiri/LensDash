@@ -70,26 +70,10 @@ public class Player : MonoBehaviour
             currentWorld = worldNumber;
             levelNumber = 1;
 
-            //Changes music
-            if (worldNumber != currentWorld)
-            {
-                currentWorld = worldNumber;
-
-                if (AudioManager.Instance != null)
-                    AudioManager.Instance.SetWorldMusic(currentWorld);
-
-                worldBackgroundColor = worldBackgroundColors[currentWorld - 1];
-                worldPaneColor = worldPaneColors[currentWorld - 1];
-            }
-
-            if (AudioManager.Instance != null)
-            {
-                if (worldNumber == 1 && AudioManager.Instance != null)
-                    AudioManager.Instance.ForceStartWorldMusic(currentWorld);
-                else
-                    AudioManager.Instance.SetWorldMusic(currentWorld);
-            }
-
+            if (worldNumber == 1)
+                AudioManager.Instance.ForceStartWorldMusic(currentWorld);
+            else
+                AudioManager.Instance.SetWorldMusic(currentWorld);
 
             worldBackgroundColor = worldBackgroundColors[currentWorld - 1];
             worldPaneColor = worldPaneColors[currentWorld - 1];
@@ -136,10 +120,16 @@ public class Player : MonoBehaviour
 
             if (jumpCount > 0)
             {
+                bool isFirstJump = (jumpCount == 2);
+
                 jumpCount -= 1;
                 rb.linearVelocity = new(rb.linearVelocity.x, 0);
-                float newForce = jumpCount == 1 ? jumpForce : doubleJumpForce;
+
+                float newForce = isFirstJump ? jumpForce : doubleJumpForce;
                 rb.AddForce(Vector2.up * newForce, ForceMode2D.Impulse);
+
+                if (isFirstJump) AudioManager.Instance.PlayJumpSfx();
+                else AudioManager.Instance.PlayDoubleJumpSfx();
             }
         }
     }
@@ -163,6 +153,8 @@ public class Player : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         ToggleStun(true);
+
+        AudioManager.Instance.PlayDeathSfx();
 
         screenShake.StartShake(deathShakeDuration, deathShakeStrength);
 
@@ -196,6 +188,8 @@ public class Player : MonoBehaviour
         if (rotating)
             return;
 
+        AudioManager.Instance.PlayRedoSfx();
+
         rb.linearVelocity = Vector2.zero;
         ToggleStun(true);
 
@@ -228,6 +222,7 @@ public class Player : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         ToggleStun(true);
 
+        AudioManager.Instance.PlayTeleportSfx();
 
         foreach (SpriteRenderer sr in playerSRs)
             sr.enabled = false;
@@ -246,6 +241,8 @@ public class Player : MonoBehaviour
     {
         if (rotating)
             return;
+
+        AudioManager.Instance.PlayRotateSfx();
 
         float rotation = rotateClockwise ? 90 : -90;
         StartCoroutine(Rotate(rotation, rotationSpeed));

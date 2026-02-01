@@ -230,19 +230,24 @@ MonoBehaviour:
   playZone: {fileID: 0}
   screenWipe: {fileID: 0}
   levelName: {fileID: 0}
+  tutorialScreen: {fileID: 0}
+  screenShake: {fileID: 0}
   worldNumber: 1
   moveSpeed: 5
   jumpForce: 12.5
   doubleJumpForce: 10
-  bounceForce: 35
-  horizontalBounceIncrease: 4
   teleportDistance: 3
+  rotationSpeed: 150
+  deathShakeDuration: 0.12
+  deathShakeStrength: 0.4
   worldBackgroundColors:
   - {r: 0.047058824, g: 0.0627451, b: 0.078431375, a: 1}
-  - {r: 0.05882353, g: 0.078431375, b: 0.039215688, a: 1}
+  - {r: 0.023529412, g: 0.08235294, b: 0.07450981, a: 1}
+  - {r: 0.050980393, g: 0.05882353, b: 0.039215688, a: 1}
   worldPaneColors:
   - {r: 0.19215687, g: 0.25882354, b: 0.31764707, a: 1}
-  - {r: 0.23921569, g: 0.32156864, b: 0.16078432, a: 1}
+  - {r: 0.08627451, g: 0.32156864, b: 0.2901961, a: 1}
+  - {r: 0.21176471, g: 0.27058825, b: 0.15686275, a: 1}
 --- !u!114 &5811198956063584917
 MonoBehaviour:
   m_ObjectHideFlags: 0

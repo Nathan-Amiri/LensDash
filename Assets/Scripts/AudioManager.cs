@@ -21,7 +21,35 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float musicVolume = 1.0f;
 
     [Header("SFX")]
-    [SerializeField] private float sfxVolume = 1.0f;
+    [SerializeField] private AudioClip jumpSfx;
+    [Range(0f, 1f)][SerializeField] private float jumpVol = 1f;
+
+    [SerializeField] private AudioClip doubleJumpSfx;
+    [Range(0f, 1f)][SerializeField] private float doubleJumpVol = 1f;
+
+    [SerializeField] private AudioClip deathSfx;
+    [Range(0f, 1f)][SerializeField] private float deathVol = 1f;
+
+    [SerializeField] private AudioClip panePickupSfx;
+    [Range(0f, 1f)][SerializeField] private float panePickupVol = 1f;
+
+    [SerializeField] private AudioClip panePlaceSfx;
+    [Range(0f, 1f)][SerializeField] private float panePlaceVol = 1f;
+
+    [SerializeField] private AudioClip redoSfx;
+    [Range(0f, 1f)][SerializeField] private float redoVol = 1f;
+
+    [SerializeField] private AudioClip rotateSfx;
+    [Range(0f, 1f)][SerializeField] private float rotateVol = 1f;
+
+    [SerializeField] private AudioClip screenWipeSfx;
+    [Range(0f, 1f)][SerializeField] private float screenWipeVol = 1f;
+
+    [SerializeField] private AudioClip teleportSfx;
+    [Range(0f, 1f)][SerializeField] private float teleportVol = 1f;
+
+
+
 
     private AudioSource musicA;
     private AudioSource musicB;
@@ -49,9 +77,13 @@ public class AudioManager : MonoBehaviour
         SetupMusicSource(musicA);
         SetupMusicSource(musicB);
 
+        musicA.spatialBlend = 0f;
+        musicB.spatialBlend = 0f;
+
         sfxSource.loop = false;
         sfxSource.playOnAwake = false;
-        sfxSource.volume = sfxVolume;
+        sfxSource.spatialBlend = 0f;
+        sfxSource.volume = 1f;
     }
 
     private void SetupMusicSource(AudioSource src)
@@ -59,12 +91,6 @@ public class AudioManager : MonoBehaviour
         src.loop = true;
         src.playOnAwake = false;
         src.volume = 0f;
-    }
-
-    public void SetSfxVolume(float v)
-    {
-        sfxVolume = Mathf.Clamp01(v);
-        if (sfxSource != null) sfxSource.volume = sfxVolume;
     }
 
     public void SetMusicVolume(float v)
@@ -76,12 +102,11 @@ public class AudioManager : MonoBehaviour
             active.volume = musicVolume;
     }
 
-    public void PlaySfx(AudioClip clip, float volumeMultiplier = 1f, float pitch = 1f)
+    public void PlaySfx(AudioClip clip, float volumeMultiplier = 1f)
     {
         if (clip == null) return;
 
-        sfxSource.pitch = pitch;
-        sfxSource.PlayOneShot(clip, sfxVolume * Mathf.Clamp01(volumeMultiplier));
+        sfxSource.PlayOneShot(clip, Mathf.Clamp01(volumeMultiplier));
     }
 
     public void SetWorldMusic(int worldNumber)
@@ -194,11 +219,24 @@ public class AudioManager : MonoBehaviour
 
         AudioSource active = usingA ? musicA : musicB;
         active.clip = clip;
-        active.volume = musicVolume;
         active.loop = true;
+        active.volume = musicVolume;
 
         if (!active.isPlaying)
             active.Play();
     }
+
+    public void PlayJumpSfx() => PlaySfx(jumpSfx, jumpVol);
+    public void PlayDoubleJumpSfx() => PlaySfx(doubleJumpSfx, doubleJumpVol);
+    public void PlayDeathSfx() => PlaySfx(deathSfx, deathVol);
+
+    public void PlayPanePickupSfx() => PlaySfx(panePickupSfx, panePickupVol);
+    public void PlayPanePlaceSfx() => PlaySfx(panePlaceSfx, panePlaceVol);
+
+    public void PlayRedoSfx() => PlaySfx(redoSfx, redoVol);
+    public void PlayRotateSfx() => PlaySfx(rotateSfx, rotateVol);
+
+    public void PlayScreenWipeSfx() => PlaySfx(screenWipeSfx, screenWipeVol);
+    public void PlayTeleportSfx() => PlaySfx(teleportSfx, teleportVol);
 
 }

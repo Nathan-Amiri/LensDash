@@ -54,6 +54,8 @@ public class Inventory : MonoBehaviour
 
                 slotSRs[i].color = GetColorFromEnum(paneColor); // Will never be colorless
 
+                AudioManager.Instance.PlayPanePickupSfx();
+
                 return;
             }
         }
@@ -166,6 +168,8 @@ public class Inventory : MonoBehaviour
         if (CheckIfPositionIsInBox(mousePosition))
         {
             gridColors[PaneNumberFinder.GetPaneNumber(mousePosition)] = storedPanes[draggingSlot];
+
+            AudioManager.Instance.PlayPanePlaceSfx();
 
             storedPanes[draggingSlot] = PaneColor.Colorless;
 
