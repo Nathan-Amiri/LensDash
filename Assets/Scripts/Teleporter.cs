@@ -12,6 +12,6 @@ public class Teleporter : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
-            col.GetComponent<Player>().Teleporter(transform.position, direction);
+            col.GetComponent<Player>().Teleporter(circleIndicator.transform.position);
     }
 }
