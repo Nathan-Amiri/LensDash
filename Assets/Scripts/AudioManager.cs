@@ -121,7 +121,6 @@ public class AudioManager : MonoBehaviour
         if (delay > 0f && (usingA ? musicA : musicB).isPlaying)
             yield return new WaitForSeconds(delay);
 
-
         if (!from.isPlaying)
         {
             to.clip = nextClip;
