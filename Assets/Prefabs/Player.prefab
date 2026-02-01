@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 672455109
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1248736780, guid: 021d9754da1ba144593231e394bdd0eb, type: 3}
+  m_Sprite: {fileID: 1491154991, guid: 8ada3cf9465c26b43ba4cd6a4f6c04eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 12.5
   doubleJumpForce: 10
-  teleportDistance: 3
+  teleportDistance: 3.54
   rotationSpeed: 150
   deathShakeDuration: 0.12
   deathShakeStrength: 0.4
