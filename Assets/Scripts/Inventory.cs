@@ -114,6 +114,8 @@ public class Inventory : MonoBehaviour
         if (storedPanes[slotNumber] == PaneColor.Colorless)
             return;
 
+        AudioManager.Instance.PlayPanePickupSfx();
+
         player.ToggleStun(true);
 
         draggingSlot = slotNumber;
@@ -136,12 +138,17 @@ public class Inventory : MonoBehaviour
                     levelElement.NewPane(gridColors[lastGridSection]);
             }
 
-            lastGridSection = currentGridSection;
+            if (currentGridSection != lastGridSection)
+            {
+                AudioManager.Instance.PlayPaneHoverSfx();
+            }
 
             foreach (LevelElement levelElement in LevelElement.levelElements[currentGridSection])
                 levelElement.NewPane(storedPanes[draggingSlot]);
 
             ChangePaneBackgroundColor(currentGridSection, storedPanes[draggingSlot]);
+
+            lastGridSection = currentGridSection;
         }
         else
         {
@@ -169,14 +176,14 @@ public class Inventory : MonoBehaviour
         {
             gridColors[PaneNumberFinder.GetPaneNumber(mousePosition)] = storedPanes[draggingSlot];
 
-            AudioManager.Instance.PlayPanePlaceSfx();
-
             storedPanes[draggingSlot] = PaneColor.Colorless;
 
             slotSRs[draggingSlot].color = worldBackgroundColor;
 
             slotSRs[draggingSlot].enabled = true;
         }
+
+        AudioManager.Instance.PlayPanePlaceSfx();
 
         slotSRs[draggingSlot].transform.position = slotPositions[draggingSlot];
 

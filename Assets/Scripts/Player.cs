@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     {
         if (!tutorialHasDisplayedAtStart)
         {
-            Tutorial();
+            Tutorial(false);
             tutorialHasDisplayedAtStart = true; // Never gets set back to false
         }
 
@@ -190,8 +190,6 @@ public class Player : MonoBehaviour
         if (rotating)
             return;
 
-        AudioManager.Instance.PlayRedoSfx();
-
         rb.linearVelocity = Vector2.zero;
         ToggleStun(true);
 
@@ -281,10 +279,13 @@ public class Player : MonoBehaviour
         rotating = false;
     }
 
-    public void Tutorial()
+    public void Tutorial(bool playSound = true)
     {
         if (rotating)
             return;
+
+        if (playSound)
+            AudioManager.Instance.PlayUIButtonSfx();
 
         tutorialScreen.SetActive(!tutorialScreen.activeSelf);
         ToggleStun(tutorialScreen.activeSelf);

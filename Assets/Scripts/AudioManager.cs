@@ -36,9 +36,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip panePlaceSfx;
     [Range(0f, 1f)][SerializeField] private float panePlaceVol = 1f;
 
-    [SerializeField] private AudioClip redoSfx;
-    [Range(0f, 1f)][SerializeField] private float redoVol = 1f;
-
     [SerializeField] private AudioClip rotateSfx;
     [Range(0f, 1f)][SerializeField] private float rotateVol = 1f;
 
@@ -50,6 +47,12 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip victorySfx;
     [Range(0f, 1f)][SerializeField] private float victoryVol = 1f;
+
+    [SerializeField] private AudioClip paneHoverSfx;
+    [Range(0f, 1f)][SerializeField] private float paneHoverVol = 1f;
+
+    [SerializeField] private AudioClip uiButtonSfx;
+    [Range(0f, 1f)][SerializeField] private float uiButtonVol = 1f;
 
 
     private AudioSource musicA;
@@ -233,12 +236,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPanePickupSfx() => PlaySfx(panePickupSfx, panePickupVol);
     public void PlayPanePlaceSfx() => PlaySfx(panePlaceSfx, panePlaceVol);
-
-    public void PlayRedoSfx() => PlaySfx(redoSfx, redoVol);
     public void PlayRotateSfx() => PlaySfx(rotateSfx, rotateVol);
 
     public void PlayScreenWipeSfx() => PlaySfx(screenWipeSfx, screenWipeVol);
     public void PlayTeleportSfx() => PlaySfx(teleportSfx, teleportVol);
 
     public void PlayVictorySfx() => PlaySfx(victorySfx, victoryVol);
+    public void PlayPaneHoverSfx() => PlaySfx(paneHoverSfx, paneHoverVol);
+    public void PlayUIButtonSfx() => PlaySfx(uiButtonSfx, uiButtonVol);
 }

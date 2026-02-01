@@ -7,7 +7,6 @@ public class StoredPane : MonoBehaviour
 
     public void OnMouseDown()
     {
-        AudioManager.Instance.PlayPanePickupSfx();
         inventory.SelectPaneSlot(slotNumber);
     }
     public void OnMouseOver()
