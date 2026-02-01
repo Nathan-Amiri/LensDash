@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
     public float doubleJumpForce = 15.5f;
     private readonly float fallMultiplier = 3; // Fastfall
 
-    public float teleportDistance = 3;
     public float rotationSpeed = 150;
 
     public float deathShakeDuration = .12f;
@@ -228,12 +227,12 @@ public class Player : MonoBehaviour
         groundCheckCol.enabled = !on;
     }
 
-    public void Teleporter(Vector3 teleporterPosition, Vector2 teleportDirection)
+    public void Teleporter(Vector2 destination)
     {
-        StartCoroutine(TeleportRoutine(teleporterPosition, teleportDirection));
+        StartCoroutine(TeleportRoutine(destination));
     }
 
-    private IEnumerator TeleportRoutine(Vector3 teleporterPosition, Vector2 teleportDirection)
+    private IEnumerator TeleportRoutine(Vector2 destination)
     {
         rb.linearVelocity = Vector2.zero;
         ToggleStun(true);
@@ -245,7 +244,7 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(.15f);
 
-        transform.position = teleporterPosition + ((Vector3)teleportDirection * teleportDistance);
+        transform.position = destination;
 
         foreach (SpriteRenderer sr in playerSRs)
             sr.enabled = true;
